@@ -1,0 +1,13 @@
+.ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+    padding: 0.5em 1em;
+}
+.ui-fieldset-toggleable .ui-fieldset-legend {
+    cursor: pointer;
+    padding-left: 2em;
+    position: relative;
+}
+.ui-fieldset .ui-fieldset-toggler {
+    left: 0.5em;
+    position: absolute;
+    top: 0.5em;
+}

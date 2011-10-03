@@ -1,0 +1,105 @@
+body {
+    color: #595959;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+}
+
+ul.dropmenu-ex{
+    display: block;
+    float: left; 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+   /* background: url("../images/navigation.png") repeat-x scroll 0 0 transparent;*/
+    border: 1px solid #CCCCCC;
+}
+
+.dropmenu-ex li{
+    list-style: none;
+}
+
+.dropmenu-ex li a, .dropmenu-ex li{
+    float: left; 
+}
+
+.dropmenu-ex li{
+    list-style: none outside none;
+    position: relative;
+    top: 0px;
+}
+
+.dropmenu-ex li a{
+    border-right: 1px solid #CCCCCC;
+    color: #FFF;
+    padding: 8px 30px 10px 15px;
+    text-decoration: none;    
+}
+
+.dropmenu-ex li a:hover{
+    background: url("../images/gradient.png") repeat-x scroll 0 0 #FFFFFF;
+    color: #0657AD;    
+}
+
+.dropmenu-ex-active{
+    background: url("../images/gradient.png") repeat-x scroll 0 0 #FFFFFF;
+    color: #0657AD;    
+}
+
+.dropmenu-ex-subitem-active{
+        background: none repeat scroll 0 0 #F0F0F0;
+    color: #F67A00 !important;
+}
+
+.dropmenu-ex li span {
+    background: url("../images/arrow_up.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    width: 10px;
+}
+
+.dropmenu-ex li ul li a span {
+    background: url("../images/arrow_sub.png") repeat-x scroll 0 0 transparent;
+}
+
+.dropmenu-ex li a:hover span, .dropmenu-ex li.open > a span {
+    background-image: url("../images/arrow_hover.png");
+}
+
+.dropmenu-ex li ul li a{
+    width: 150px;
+    color: #0657AD !important;   
+}
+
+.dropmenu-ex li > ul{
+    display: none;
+    top: 100%;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding:0;
+    background: url("../images/gradient.png") repeat-x scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;    
+}
+
+.dropmenu-ex li > ul > li > a{
+    display: block;
+    border-top:  1px solid #CCCCCC;
+}
+
+.dropmenu-ex li ul li a:hover{
+    background: none repeat scroll 0 0 #F0F0F0;
+    color: #F67A00 !important;
+}
+
+.dropmenu-ex li:hover > ul{
+    display: block;
+}
+
+.dropmenu-ex li ul li ul {
+    left: 100%;
+    top:0;
+}
