@@ -35,7 +35,7 @@ HTMLCreate = {
         return this;
     },
     
-    createSubmtin: function(options){
+    createSubmit: function(options){
         this.content += "<button type='submit' id='" + options.id + "'>Enviar</button>";
         return this;
         
