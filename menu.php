@@ -11,15 +11,10 @@
         <script type="text/javascript" src="scripts/dropmenu_ex.js" ></script>
         
         <script type="text/javascript">
-            $(function(){
-               
-               
-               
-               $("#novo_menu").dropmenuEx({themed:true});
-               
-               
-       
-               
+            $(function(){                                            
+                
+                $("#novo_menu").dropmenuEx({themed:true});
+                                                    
             });
     
         </script>
