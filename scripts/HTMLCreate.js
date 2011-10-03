@@ -33,6 +33,12 @@ HTMLCreate = {
     createLabel: function(options){
         this.content += "<label for='"+options.forLabel+"' class='"+options.classLabel+"'>"+options.content+"</label>";
         return this;
+    },
+    
+    createSubmtin: function(options){
+        this.content += "<button type='submit' id='" + options.id + "'>Enviar</button>";
+        return this;
+        
     }
         
         
