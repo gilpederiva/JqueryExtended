@@ -1,6 +1,6 @@
 (function( $, undefined ) {
 
-    $.widget("ui.dropmenuEx", {
+    $.widget("ex.dropmenuEx", {
     
         options:{         
             themed: false
@@ -79,6 +79,10 @@
             });               
             
             
+            self.element.find( "li a" ).bind( "keydown.dropmenu", $.proxy( self, "_keydown" ) );
+            
+            /*
+            
             self.element.find("li a").bind("keydown", function(event){
                                 
                 //seta para direita
@@ -137,7 +141,29 @@
                 }).bind("mouseleave", function(event){
                 // $(this).blur(); 
                 });
-                           
-        }        
+          
+          */
+        },
+
+        
+        _keydown: function( event ){
+            
+            var keyCode = $.ui.keyCode;
+            
+            
+            switch( event.keyCode ){
+                
+                case keyCode.RIGHT: alert("direita"); break;
+                    case keyCode.LEFT: alert("esquerda"); break;
+                        case keyCode.UP: alert("cima"); break;
+                            case keyCode.DOWN: alert("baixo"); break;
+                
+                
+            }
+            
+            
+        }
+        
+
     });
 })( jQuery );
