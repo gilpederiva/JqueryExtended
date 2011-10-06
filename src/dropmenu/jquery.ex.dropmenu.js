@@ -78,7 +78,7 @@
                 
                 if ( !$elemParent.closest("ul li.primary").find("li a").hasClass("dropmenu-ex-subitem-active")){
                     
-                    $elemParent.closest("ul li.primary").find("ul").hide();
+                    $elemParent.closest("ul li.primary").find("ul").hide().end().find("a.dropmenu-ex-active").removeClass("dropmenu-ex-active dropmenu-ex-open");
                     
                     
                 }
@@ -89,12 +89,14 @@
             
             self.element.find("li").hover(function(){
                 
-                    var $elemParent = $(this);
+                
+                
+                var $elemParent = $(this);
 
                 if ( $elemParent.hasClass("primary") ){
-                    $(this).addClass("dropmenu-ex-active dropmenu-ex-open");       
+                    $(this).find("a:eq(0)").addClass("dropmenu-ex-active dropmenu-ex-open");       
                 }else{
-                    $(this).addClass("dropmenu-ex-subitem-active");       
+                    $(this).find("a:eq(0)").addClass("dropmenu-ex-subitem-active");       
                 }
 
                 if ( $elemParent.hasClass("haschild") ){
@@ -110,11 +112,11 @@
                 if ( $elemParent.hasClass("primary") ){
 
                     if ( !$elemParent.find("a.dropmenu-ex-subitem-active").is("a")  )                    
-                        $(this).removeClass("dropmenu-ex-active dropmenu-ex-open");   
+                        $(this).find("a:eq(0)").removeClass("dropmenu-ex-active dropmenu-ex-open");   
 
 
                 }else{
-                    $(this).removeClass("dropmenu-ex-subitem-active");       
+                    $(this).find("a:eq(0)").removeClass("dropmenu-ex-subitem-active");       
                 }
 
                 if ( $elemParent.hasClass("haschild") && !$elemParent.find("a.dropmenu-ex-subitem-active").is("a") ){                    
