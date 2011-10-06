@@ -32,11 +32,13 @@ ul.dropmenu-ex{
 .dropmenu-ex li a:hover{
     background: url("img/gradient.png") repeat-x scroll 0 0 #FFFFFF;
     color: #0657AD !important;    
+    text-decoration: underline;
 }
 
 .dropmenu-ex-active{
     background: url("img/gradient.png") repeat-x scroll 0 0 #FFFFFF;
-    color: #0657AD !important;    
+    color: #0657AD !important;
+    text-decoration: underline;
 }
 
 .dropmenu-ex-open{
@@ -44,9 +46,15 @@ ul.dropmenu-ex{
     color: #0657AD !important;       
 }
 
+li.dropmenu-ex-open a{
+    
+    color: #0657AD !important;       
+}
+
 .dropmenu-ex-subitem-active{
-        background: none repeat scroll 0 0 #F0F0F0;
+    background: none repeat scroll 0 0 #F0F0F0;
     color: #F67A00 !important;
+    text-decoration: underline;
 }
 
 .dropmenu-ex li span {
