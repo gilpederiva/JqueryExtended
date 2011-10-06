@@ -39,7 +39,7 @@
 
 
 
-
+/*
 
             self.element.find("li > a").bind("focus", function(){ 
 
@@ -85,45 +85,79 @@
                 
             });
             
+            */
+            
             
             
             self.element.find("li").hover(function(){
                 
                 
+                //console.log( $(this) );
                 
-                var $elemParent = $(this);
+                var elemento = $(this);
+                
+                //console.log(elemParent);
+                
+                if (elemento.hasClass("haschild")){
+                    elemento.find("ul").eq(0).slideDown();
+                }
+                
+                if (elemento.hasClass("primary")){
+                    elemento.addClass("dropmenu-ex-active")
+                }
+                
+                
+
+                
+             /*   var $elemParent = $(this).closest("li");
 
                 if ( $elemParent.hasClass("primary") ){
-                    $(this).find("a:eq(0)").addClass("dropmenu-ex-active dropmenu-ex-open");       
+                    $(this).closest("li").find("a:eq(0)").addClass("dropmenu-ex-active dropmenu-ex-open");       
                 }else{
-                    $(this).find("a:eq(0)").addClass("dropmenu-ex-subitem-active");       
+                    $(this).closest("li").find("a:eq(0)").addClass("dropmenu-ex-subitem-active");       
                 }
 
                 if ( $elemParent.hasClass("haschild") ){
                     $elemParent.find("ul").eq(0).show();
-                }
+                } */
                 
                 
             }, function(){
                 
+                 console.log( $(this) );
                 
-                var $elemParent = $(this);
+                var elemento = $(this);
+                
+                console.log(elemento);
+                
+                if (elemento.hasClass("haschild")){
+                    elemento.find("ul").eq(0).slideUp(100);
+                }
+                
+                if (elemento.hasClass("primary")){
+                    elemento.removeClass("dropmenu-ex-active")
+                }                
+                
+                
+                
+                
+          /*      var $elemParent = $(this).closest("li");
 
                 if ( $elemParent.hasClass("primary") ){
 
                     if ( !$elemParent.find("a.dropmenu-ex-subitem-active").is("a")  )                    
-                        $(this).find("a:eq(0)").removeClass("dropmenu-ex-active dropmenu-ex-open");   
+                        $(this).closest("li").find("a:eq(0)").removeClass("dropmenu-ex-active dropmenu-ex-open");   
 
 
                 }else{
-                    $(this).find("a:eq(0)").removeClass("dropmenu-ex-subitem-active");       
+                    $(this).closest("li").find("a:eq(0)").removeClass("dropmenu-ex-subitem-active");       
                 }
 
                 if ( $elemParent.hasClass("haschild") && !$elemParent.find("a.dropmenu-ex-subitem-active").is("a") ){                    
                     $elemParent.find("ul").eq(0).hide();
                 }  
                                 
-                
+            */    
                 
             });  
             

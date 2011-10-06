@@ -3,7 +3,8 @@ ul.dropmenu-ex{
     float: left; 
     margin: 0;
     padding: 0;
-    width: 100%;   
+    width: 100%;
+   /* background: url("../images/navigation.png") repeat-x scroll 0 0 transparent;*/
     border: 1px solid #CCCCCC;
 }
 
@@ -29,20 +30,13 @@ ul.dropmenu-ex{
 }
 
 .dropmenu-ex li a:hover{
-   
-    /*
     background: url("img/gradient.png") repeat-x scroll 0 0 #FFFFFF;
     color: #0657AD !important;    
     text-decoration: underline;
-    
-    */
 }
 
 .dropmenu-ex-active{
-    background: url("img/gradient.png") repeat-x scroll 0 0 #FFFFFF;    
-}
-
-li.dropmenu-ex-active > a{
+    background: url("img/gradient.png") repeat-x scroll 0 0 #FFFFFF;
     color: #0657AD !important;
     text-decoration: underline;
 }
@@ -78,7 +72,7 @@ li.dropmenu-ex-open a{
 }
 
 .dropmenu-ex li a:hover span, .dropmenu-ex li.open > a span {
-  /*  background-image: url("img/arrow_hover.png"); */
+    background-image: url("img/arrow_hover.png");
 }
 
 .dropmenu-ex li ul li a{
@@ -104,15 +98,12 @@ li.dropmenu-ex-open a{
 }
 
 .dropmenu-ex li ul li a:hover{
-    /*
     background: none repeat scroll 0 0 #F0F0F0;
     color: #F67A00 !important;
-    
-    */
 }
 
 .dropmenu-ex li:hover > ul{
-   /* display: block; */
+    display: block;
 }
 
 .dropmenu-ex li ul li ul {
