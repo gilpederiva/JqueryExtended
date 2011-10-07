@@ -7,7 +7,13 @@
         },
 
         _create: function(){
-
+            
+            /**
+             * 
+             * TODO adicionar os preventEvent
+             */
+            
+            
             var self = this,
             options = self.options;
             
@@ -52,6 +58,9 @@
             $.each(itensPrimarios, function(i, val){                                                             
                 itensPrimarios.eq(i).addClass("primary");
             });            
+            
+            
+            
             
 
             //define as funcionalidades quando o elemento recebe o foco
@@ -102,7 +111,7 @@
             
             
             //funcionalidade de hover para o menu
-            self.element.find("li").hover(function(){
+            self.listItems.hover(function(){
                                                              
                 var elemento = $(this);
                                                 
