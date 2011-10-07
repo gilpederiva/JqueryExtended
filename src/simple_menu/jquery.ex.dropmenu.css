@@ -1,4 +1,4 @@
-ul.dropmenu-ex{
+ul.ex-dropmenu{
     display: block;
     float: left; 
     margin: 0;
@@ -8,28 +8,28 @@ ul.dropmenu-ex{
     border: 1px solid #CCCCCC;
 }
 
-.dropmenu-ex li{
+.ex-dropmenu li{
     list-style: none;
 }
 
-.dropmenu-ex li a, .dropmenu-ex li{
+.ex-dropmenu li a, .ex-dropmenu li{
     float: left; 
 }
 
-.dropmenu-ex li{
+.ex-dropmenu li{
     list-style: none outside none;
     position: relative;
     top: 0px;
 }
 
-.dropmenu-ex li a{
+.ex-dropmenu li a{
     border-right: 1px solid #CCCCCC;
     color: #FFF;
     padding: 8px 30px 10px 15px;
     text-decoration: none;    
 }
 
-.dropmenu-ex li a:hover{
+.ex-dropmenu li a:hover{
     background: url("img/gradient.png") repeat-x scroll 0 0 #FFFFFF;
     color: #0657AD !important;    
     text-decoration: underline;
@@ -57,7 +57,7 @@ li.dropmenu-ex-open a{
     text-decoration: underline;
 }
 
-.dropmenu-ex li span {
+.ex-dropmenu li span {
     background: url("img/arrow_up.png") repeat-x scroll 0 0 transparent;
     display: block;
     height: 10px;
@@ -67,20 +67,20 @@ li.dropmenu-ex-open a{
     width: 10px;
 }
 
-.dropmenu-ex li ul li a span {
+.ex-dropmenu li ul li a span {
     background: url("img/arrow_sub.png") repeat-x scroll 0 0 transparent;
 }
 
-.dropmenu-ex li a:hover span, .dropmenu-ex li.open > a span {
+.ex-dropmenu li a:hover span, .ex-dropmenu li.open > a span {
     background-image: url("img/arrow_hover.png");
 }
 
-.dropmenu-ex li ul li a{
+.ex-dropmenu li ul li a{
     width: 150px;
     color: #0657AD !important;   
 }
 
-.dropmenu-ex li > ul{
+.ex-dropmenu li > ul{
     display: none;
     top: 100%;
     position: absolute;
@@ -92,21 +92,21 @@ li.dropmenu-ex-open a{
     border-left: 1px solid #CCCCCC;    
 }
 
-.dropmenu-ex li > ul > li > a{
+.ex-dropmenu li > ul > li > a{
     display: block;
     border-top:  1px solid #CCCCCC;
 }
 
-.dropmenu-ex li ul li a:hover{
+.ex-dropmenu li ul li a:hover{
     background: none repeat scroll 0 0 #F0F0F0;
     color: #F67A00 !important;
 }
 
-.dropmenu-ex li:hover > ul{
+.ex-dropmenu li:hover > ul{
     display: block;
 }
 
-.dropmenu-ex li ul li ul {
+.ex-dropmenu li ul li ul {
     left: 100%;
     top:0;
 }

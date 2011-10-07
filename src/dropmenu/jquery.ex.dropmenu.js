@@ -11,81 +11,80 @@
             var self = this,
             options = self.options;
 
-            $(window).bind("keydown", function(event){
-                //console.log(event);                
+            $(window).bind("keydown", function(event){                      
                 if (event.keyCode == 77 && event.altKey == true){
-                    self.element.find("li:eq(0) a").focus().addClass("dropmenu-ex-active");
+                    self.element.find("li:eq(0) a").focus().closest("li").addClass("ex-dropmenu-active");
                 }
             })
-
-            self.element.addClass("ui-widget ui-corner-all");
-
+                        
+            //adiciona as classes ao elemento <ul> pai
+            self.element.addClass("ex-dropmenu ui-widget ui-corner-all ui-state-default");
+            
+            //busca os elementos <li> que possuem filhos <ul> adicionando o elemento <span>
             var items = self.element.find("li ul");
 
             $.each(items, function(i, val){                                                             
                 items.eq(i).parent().find("a:eq(0)").append("<span></span>").end().addClass("haschild");
             });
 
-
+            
+            //busca os elementos <li> primários adicionando a classe primary
             var itensPrimarios = self.element.children("li");
 
             $.each(itensPrimarios, function(i, val){                                                             
                 itensPrimarios.eq(i).addClass("primary");
             });            
 
-            if (options.themed){                                              
-                self.element.addClass("ui-state-default");                
-            }
 
 
 
-/*
+
+
 
             self.element.find("li > a").bind("focus", function(){ 
 
-                var $elemParent = $(this).closest("li");
+                var elementoLI = $(this).closest("li");
 
-                if ( $elemParent.hasClass("primary") ){
-                    $(this).addClass("dropmenu-ex-active dropmenu-ex-open");       
+                if ( elementoLI.hasClass("primary") ){
+                    elementoLI.addClass("ex-dropmenu-active ex-dropmenu-open");       
                 }else{
-                    $(this).addClass("dropmenu-ex-subitem-active");       
+                    elementoLI.addClass("ex-dropmenu-subitem-active");       
                 }
 
-                if ( $elemParent.hasClass("haschild") ){
-                    $elemParent.find("ul").eq(0).show();
+                if ( elementoLI.hasClass("haschild") ){
+                    elementoLI.find("ul").eq(0).slideDown(100);
                 }
 
             }).bind("blur", function(){  
 
-                var $elemParent = $(this).closest("li");
+                var elementoLI = $(this).closest("li");
 
-                if ( $elemParent.hasClass("primary") ){
+                if ( elementoLI.hasClass("primary") ){
 
-                    if ( !$elemParent.find("a.dropmenu-ex-subitem-active").is("a")  )                    
-                        $(this).removeClass("dropmenu-ex-active dropmenu-ex-open");   
+                    if ( !elementoLI.find("li.ex-dropmenu-subitem-active").is("li")  )                    
+                        elementoLI.removeClass("ex-dropmenu-active ex-dropmenu-open");   
 
 
                 }else{
-                    $(this).removeClass("dropmenu-ex-subitem-active");       
+                    elementoLI.removeClass("ex-dropmenu-subitem-active");       
                 }
 
-                if ( $elemParent.hasClass("haschild") && !$elemParent.find("a.dropmenu-ex-subitem-active").is("a") ){                    
-                    $elemParent.find("ul").eq(0).hide();
+                if ( elementoLI.hasClass("haschild") && !elementoLI.find("li.ex-dropmenu-subitem-active").is("li") ){                    
+                    elementoLI.find("ul").eq(0).slideUp(100);
                 }  
                 
+                                
                 
-                //console.log(  );
-                
-                if ( !$elemParent.closest("ul li.primary").find("li a").hasClass("dropmenu-ex-subitem-active")){
+                if ( !elementoLI.closest("ul li.primary").find("li").hasClass("ex-dropmenu-subitem-active")){
                     
-                    $elemParent.closest("ul li.primary").find("ul").hide().end().find("a.dropmenu-ex-active").removeClass("dropmenu-ex-active dropmenu-ex-open");
+                    elementoLI.closest("ul li.primary").find("ul").slideUp(100).end().find("li.ex-dropmenu-active").removeClass("ex-dropmenu-active ex-dropmenu-open");
                     
                     
                 }
                 
             });
             
-            */
+          
             
             
             
@@ -98,12 +97,15 @@
                 
                 //console.log(elemParent);
                 
-                if (elemento.hasClass("haschild")){
-                    elemento.find("ul").eq(0).slideDown();
+                if (elemento.hasClass("haschild")){                    
+                    elemento.find("ul").eq(0).slideDown(100);
+                    elemento.find("a > span").eq(0).addClass("ex-dropmenu-icon-arrow-hover");
                 }
                 
                 if (elemento.hasClass("primary")){
-                    elemento.addClass("dropmenu-ex-active")
+                    elemento.addClass("ex-dropmenu-active")
+                }else{
+                    elemento.addClass("ex-dropmenu-subitem-active");
                 }
                 
                 
@@ -132,10 +134,13 @@
                 
                 if (elemento.hasClass("haschild")){
                     elemento.find("ul").eq(0).slideUp(100);
+                    elemento.find("a > span").eq(0).removeClass("ex-dropmenu-icon-arrow-hover");
                 }
                 
                 if (elemento.hasClass("primary")){
-                    elemento.removeClass("dropmenu-ex-active")
+                    elemento.removeClass("ex-dropmenu-active")
+                }else{
+                    elemento.removeClass("ex-dropmenu-subitem-active");
                 }                
                 
                 
