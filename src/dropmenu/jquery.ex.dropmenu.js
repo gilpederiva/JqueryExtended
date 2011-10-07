@@ -3,17 +3,25 @@
     $.widget("ex.dropmenuEx", {
 
         options:{         
-            themed: false
+            effectSpeed: 100
         },
 
         _create: function(){
 
             var self = this,
             options = self.options;
+            
+            
+            self.listItems = self.element.find("li");
+            
+            self.ancoras = self.listItems.find("> a");
+                        
 
             $(window).bind("keydown", function(event){                      
                 if (event.keyCode == 77 && event.altKey == true){
-                    self.element.find("li:eq(0) a").focus().closest("li").addClass("ex-dropmenu-active");
+                    self.listItems.removeClass("ex-dropmenu-active ex-dropmenu-active ex-dropmenu-open");
+                        
+                    self.listItems.eq(0).addClass("ex-dropmenu-active").find("> a").focus();
                 }
             })
                         
@@ -21,12 +29,22 @@
             self.element.addClass("ex-dropmenu ui-widget ui-corner-all ui-state-default");
             
             //busca os elementos <li> que possuem filhos <ul> adicionando o elemento <span>
-            var items = self.element.find("li ul");
+//            var items = self.element.find("li ul");
+//
+//            $.each(items, function(i, val){                                                             
+//                items.eq(i).parent().find("a:eq(0)").append("<span></span>").end().addClass("haschild");
+//            });
+
+            var items = self.listItems.find("> ul");
 
             $.each(items, function(i, val){                                                             
                 items.eq(i).parent().find("a:eq(0)").append("<span></span>").end().addClass("haschild");
             });
 
+
+
+            
+            
             
             //busca os elementos <li> primários adicionando a classe primary
             var itensPrimarios = self.element.children("li");
@@ -34,14 +52,10 @@
             $.each(itensPrimarios, function(i, val){                                                             
                 itensPrimarios.eq(i).addClass("primary");
             });            
+            
 
-
-
-
-
-
-
-            self.element.find("li > a").bind("focus", function(){ 
+            //define as funcionalidades quando o elemento recebe o foco
+            self.ancoras.bind("focus", function(){ 
 
                 var elementoLI = $(this).closest("li");
 
@@ -52,7 +66,8 @@
                 }
 
                 if ( elementoLI.hasClass("haschild") ){
-                    elementoLI.find("ul").eq(0).slideDown(100);
+                    elementoLI.find("ul").eq(0).slideDown(options.effectSpeed);
+                    elementoLI.find("span").eq(0).addClass("ex-dropmenu-icon-arrow-hover");
                 }
 
             }).bind("blur", function(){  
@@ -70,14 +85,13 @@
                 }
 
                 if ( elementoLI.hasClass("haschild") && !elementoLI.find("li.ex-dropmenu-subitem-active").is("li") ){                    
-                    elementoLI.find("ul").eq(0).slideUp(100);
+                    elementoLI.find("ul").eq(0).slideUp(options.effectSpeed);
+                    elementoLI.find("span").eq(0).removeClass("ex-dropmenu-icon-arrow-hover");
                 }  
-                
-                                
-                
+                                                                
                 if ( !elementoLI.closest("ul li.primary").find("li").hasClass("ex-dropmenu-subitem-active")){
                     
-                    elementoLI.closest("ul li.primary").find("ul").slideUp(100).end().find("li.ex-dropmenu-active").removeClass("ex-dropmenu-active ex-dropmenu-open");
+                    elementoLI.closest("ul li.primary").find("ul").slideUp(options.effectSpeed).end().find("li.ex-dropmenu-active").removeClass("ex-dropmenu-active ex-dropmenu-open");
                     
                     
                 }
@@ -87,18 +101,13 @@
           
             
             
-            
+            //funcionalidade de hover para o menu
             self.element.find("li").hover(function(){
-                
-                
-                //console.log( $(this) );
-                
+                                                             
                 var elemento = $(this);
-                
-                //console.log(elemParent);
-                
+                                                
                 if (elemento.hasClass("haschild")){                    
-                    elemento.find("ul").eq(0).slideDown(100);
+                    elemento.find("ul").eq(0).slideDown(options.effectSpeed);
                     elemento.find("a > span").eq(0).addClass("ex-dropmenu-icon-arrow-hover");
                 }
                 
@@ -109,31 +118,12 @@
                 }
                 
                 
-
-                
-             /*   var $elemParent = $(this).closest("li");
-
-                if ( $elemParent.hasClass("primary") ){
-                    $(this).closest("li").find("a:eq(0)").addClass("dropmenu-ex-active dropmenu-ex-open");       
-                }else{
-                    $(this).closest("li").find("a:eq(0)").addClass("dropmenu-ex-subitem-active");       
-                }
-
-                if ( $elemParent.hasClass("haschild") ){
-                    $elemParent.find("ul").eq(0).show();
-                } */
-                
-                
             }, function(){
-                
-                 console.log( $(this) );
-                
+                              
                 var elemento = $(this);
-                
-                console.log(elemento);
-                
+                                                
                 if (elemento.hasClass("haschild")){
-                    elemento.find("ul").eq(0).slideUp(100);
+                    elemento.find("ul").eq(0).slideUp(options.effectSpeed);
                     elemento.find("a > span").eq(0).removeClass("ex-dropmenu-icon-arrow-hover");
                 }
                 
@@ -142,35 +132,13 @@
                 }else{
                     elemento.removeClass("ex-dropmenu-subitem-active");
                 }                
-                
-                
-                
-                
-          /*      var $elemParent = $(this).closest("li");
-
-                if ( $elemParent.hasClass("primary") ){
-
-                    if ( !$elemParent.find("a.dropmenu-ex-subitem-active").is("a")  )                    
-                        $(this).closest("li").find("a:eq(0)").removeClass("dropmenu-ex-active dropmenu-ex-open");   
-
-
-                }else{
-                    $(this).closest("li").find("a:eq(0)").removeClass("dropmenu-ex-subitem-active");       
-                }
-
-                if ( $elemParent.hasClass("haschild") && !$elemParent.find("a.dropmenu-ex-subitem-active").is("a") ){                    
-                    $elemParent.find("ul").eq(0).hide();
-                }  
-                                
-            */    
-                
+                               
             });  
             
-            
-       
-            
+                              
             //adiciona as funcionalidades de navegação pelas teclas: esquerda, direita, cima e baixo
-            self.element.find( "li a" ).bind( "keydown.dropmenu", self.keydown );
+            //self.element.find( "li a" ).bind( "keydown.dropmenu", self.keydown );
+            self.ancoras.bind( "keydown.dropmenu", self.keydown );
 
         },
 
@@ -191,7 +159,7 @@
                     }else{
 
                         if ( elemParent.hasClass("haschild") ){
-                            elemParent.find("ul:eq(0)").find("li:eq(0) a:eq(0)").focus();
+                            elemParent.find("ul:eq(0)").find("li:eq(0) a:eq(0)").focus();                                                        
                         }                       
                     }                                        
                 
