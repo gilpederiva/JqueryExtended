@@ -3,7 +3,7 @@
     $.widget("ex.dropmenuEx", {
 
         options:{         
-            effectSpeed: 100
+            effectSpeed: 200
         },
 
         _create: function(){
@@ -32,13 +32,16 @@
                         
 
             $(window).bind("keydown", function(event){     
-                
+                var keyCode = $.ui.keyCode;
                 //console.log( $.ui.keyCode );
                 if (event.keyCode == 77 && event.altKey == true){
                     self.listItems.removeClass("ex-dropmenu-active ex-dropmenu-open");                        
                     self.listItems.eq(0).addClass("ex-dropmenu-active").find("> a").focus();
                     self.keyboardMenu = true;
                 }
+                
+                
+                
                 
             }).bind("click", function(){
                 
@@ -125,7 +128,7 @@
             
                               
             //adiciona as funcionalidades de navegação pelas teclas: esquerda, direita, cima e baixo            
-            self.ancoras.bind( "keydown.dropmenu", self._keydown );
+            self.ancoras.bind( "keydown.dropmenu", {options: self.options},self._keydown );
 
         },
 
@@ -134,7 +137,7 @@
 
             var keyCode = $.ui.keyCode;
             var elemParent = null;
-            var options = this.options;
+            var options = event.data;
 
                         
             switch( event.keyCode ){
@@ -144,6 +147,7 @@
                     
                     elemParent = $(this).closest("li");
                     
+                    //para tras no tab
                     if (event.shiftKey){
                     
                         if ( elemParent.hasClass("primary") ){
@@ -158,20 +162,26 @@
                             .end();
                                   
                             if (elemParent.hasClass("haschild")){
-                                elemParent.find("ul").eq(0).slideUp(200);                            
+                                elemParent.find("ul").eq(0).slideUp(options.effectSpeed);                            
                             }                                            
                         
                             if (elemParent.prev("li").hasClass("haschild")){
-                                elemParent.prev("li").find("ul").eq(0).slideDown(200);                            
+                                elemParent.prev("li").find("ul").eq(0).slideDown(options.effectSpeed);                            
                             }                           
                                   
                         }                    
                     
+                    //para frente no tab
                     }else{
                     
                         if ( elemParent.hasClass("primary") ){
                         
-                            if ( elemParent.is( ":last-child" ) ) break;
+                            if ( elemParent.is( ":last-child" ) ){ 
+                                console.log( elemParent.closest("ul") ) 
+                                elemParent.closest("ul").focus();
+                                
+                                break;
+                            }
                         
                             elemParent.removeClass("ex-dropmenu-active ex-dropmenu-open")
                             .next("li")
@@ -179,11 +189,11 @@
                             .find("a").eq(0).focus(); 
                                   
                             if (elemParent.next("li").hasClass("haschild")){
-                                elemParent.next("li").find("ul").eq(0).slideDown(200);
+                                elemParent.next("li").find("ul").eq(0).slideDown(options.effectSpeed);
                             }          
                         
                             if (elemParent.hasClass("haschild")){
-                                elemParent.find("ul").eq(0).slideUp(200);
+                                elemParent.find("ul").eq(0).slideUp(options.effectSpeed);
                             } 
                                   
                         
@@ -215,11 +225,11 @@
                         .find("a").eq(0).focus(); 
                                   
                         if (elemParent.next("li").hasClass("haschild")){
-                            elemParent.next("li").find("ul").eq(0).toggle( 'fade', 300 ); //.slideDown(200);
+                            elemParent.next("li").find("ul").eq(0).slideDown( options.effectSpeed );
                         }          
                         
                         if (elemParent.hasClass("haschild")){
-                            elemParent.find("ul").eq(0).slideUp(200);
+                            elemParent.find("ul").eq(0).slideUp( options.effectSpeed );
                         } 
                                   
                         
@@ -239,7 +249,7 @@
                             .focus();
                                       
                             if (submenu.hasClass("haschild")){
-                                submenu.find("ul").eq(0).slideDown(200);
+                                submenu.find("ul").eq(0).slideDown( options.effectSpeed );
                                 submenu.find("a:eq(0) span:eq(0)").addClass("ex-dropmenu-icon-arrow-hover");
                             }          
 
@@ -267,11 +277,11 @@
                         .end();
                                   
                         if (elemParent.hasClass("haschild")){
-                            elemParent.find("ul").eq(0).slideUp(200);                            
+                            elemParent.find("ul").eq(0).slideUp( options.effectSpeed );                            
                         }                                            
                         
                         if (elemParent.prev("li").hasClass("haschild")){
-                            elemParent.prev("li").find("ul").eq(0).slideDown(200);                            
+                            elemParent.prev("li").find("ul").eq(0).slideDown( options.effectSpeed );                            
                         }                           
                                   
                     }else{
@@ -288,7 +298,7 @@
                         }  
                         
                         if (elemParent.hasClass("haschild")){
-                            elemParent.find("ul").eq(0).slideUp(200);
+                            elemParent.find("ul").eq(0).slideUp( options.effectSpeed );
                             elemParent.find("a span").removeClass("ex-dropmenu-icon-arrow-hover");
                         }
                         
@@ -308,7 +318,7 @@
                     .find("a:eq(0) span:eq(0)").removeClass("") ;
                     
                     if ( elemUp.hasClass("haschild") ){
-                        elemUp.find("ul").eq(0).slideUp(200);
+                        elemUp.find("ul").eq(0).slideUp( options.effectSpeed );
                         elemUp.find("a:eq(0) span:eq(0)").removeClass("ex-dropmenu-icon-arrow-hover") ;
                     }
                     
@@ -319,7 +329,7 @@
                         .find("a").eq(0).focus();
                      
                         if (elemUp.prev("li").hasClass("haschild")){
-                            elemUp.prev("li").find("ul").eq(0).slideDown(200)
+                            elemUp.prev("li").find("ul").eq(0).slideDown( options.effectSpeed )
                             elemUp.prev("li").find("a:eq(0) span:eq(0)").addClass("ex-dropmenu-icon-arrow-hover");
                         }      
                      
@@ -378,12 +388,12 @@
                         .find("span:eq(0)").addClass("ex-dropmenu-icon-arrow-hover");
                        
                         if ( elemParent.hasClass("haschild") ){
-                            elemParent.find("ul").eq(0).slideUp(200);  
+                            elemParent.find("ul").eq(0).slideUp( options.effectSpeed );  
                             elemParent.find("a:eq(0) span:eq(0)").removeClass("ex-dropmenu-icon-arrow-hover");
                         }
                        
                         if ( elemParent.next().hasClass("haschild") ){
-                            elemParent.next().find("ul").eq(0).slideDown(200);                                                        
+                            elemParent.next().find("ul").eq(0).slideDown( options.effectSpeed );                                                        
                         }
                         
                         
