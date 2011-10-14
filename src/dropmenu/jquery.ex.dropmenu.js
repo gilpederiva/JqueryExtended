@@ -84,8 +84,9 @@
                 self.ancoras.closest("li.haschild").find("ul").slideUp(200);               
                 self.ancoras.filter(":focus").trigger("blur");
                 self.mouseOver  = true; 
-                              
+                
             });
+            
             
             
             
@@ -142,73 +143,7 @@
                         
             switch( event.keyCode ){
                 
-                case keyCode.TAB:
-                    
-                    
-                    elemParent = $(this).closest("li");
-                    
-                    //para tras no tab
-                    if (event.shiftKey){
-                    
-                        if ( elemParent.hasClass("primary") ){
-                        
-                            //se for elemento primário e o primeiro <li>
-                            if ( elemParent.is( ":first-child" ) ) break;                        
-                        
-                            elemParent.removeClass("ex-dropmenu-active ex-dropmenu-open")
-                            .prev("li")
-                            .addClass("ex-dropmenu-active ex-dropmenu-open")
-                            .find("a").eq(0).focus()
-                            .end();
-                                  
-                            if (elemParent.hasClass("haschild")){
-                                elemParent.find("ul").eq(0).slideUp(options.effectSpeed);                            
-                            }                                            
-                        
-                            if (elemParent.prev("li").hasClass("haschild")){
-                                elemParent.prev("li").find("ul").eq(0).slideDown(options.effectSpeed);                            
-                            }                           
-                                  
-                        }                    
-                    
-                    //para frente no tab
-                    }else{
-                    
-                        if ( elemParent.hasClass("primary") ){
-                        
-                            if ( elemParent.is( ":last-child" ) ){ 
-                                console.log( elemParent.closest("ul") ) 
-                                elemParent.closest("ul").focus();
-                                
-                                break;
-                            }
-                        
-                            elemParent.removeClass("ex-dropmenu-active ex-dropmenu-open")
-                            .next("li")
-                            .addClass("ex-dropmenu-active ex-dropmenu-open")
-                            .find("a").eq(0).focus(); 
-                                  
-                            if (elemParent.next("li").hasClass("haschild")){
-                                elemParent.next("li").find("ul").eq(0).slideDown(options.effectSpeed);
-                            }          
-                        
-                            if (elemParent.hasClass("haschild")){
-                                elemParent.find("ul").eq(0).slideUp(options.effectSpeed);
-                            } 
-                                  
-                        
-                        }                
-                                  
-                    
-                    }
-                
-                    event.stopPropagation();
-                    event.preventDefault();
-                
-                
-                    break;
-                
-                
+                             
                 case keyCode.RIGHT:
              
                     elemParent = $(this).closest("li");
