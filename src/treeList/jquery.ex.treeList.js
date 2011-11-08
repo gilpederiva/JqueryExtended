@@ -18,13 +18,35 @@
                 
                 listItens = $(this).find("li");
                 
+                listItens.each(function(index){
+                   
+                   var valorCookie = $.cookie( "setor-" + $(this).attr("id") );
+                   
+                   if (valorCookie == 'true')
+                    $(this).find("ul:eq(0)").show().end().addClass("expanded");
+                   
+                });
+                
+                
                 listItens.addClass("directory").toggle(
                     function(){                                                       
-                        $(this).find('ul:eq(0)').slideDown( settings.speedEffect  ).end().removeClass("collapsed").addClass("expanded"); 
+                        $(this).find('ul:eq(0)').slideDown( settings.speedEffect  ).end().removeClass("collapsed").addClass("expanded");
+                        
+                        
+                        var cookieName = "setor-" + $(this).attr("id");
+                        
+                        
+                        $.cookie(cookieName, 'true');
                            
                     },
                     function(){                           
                         $(this).find('ul:eq(0)').slideUp( settings.speedEffect  ).end().removeClass("expanded").addClass("collapsed"); 
+                        
+                        var cookieName = "setor-" + $(this).attr("id");
+                        
+                        
+                        $.cookie(cookieName, 'false');                    
+                        
                     }
                    );        
                 

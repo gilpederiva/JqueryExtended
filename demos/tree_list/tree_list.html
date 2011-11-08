@@ -5,8 +5,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <link rel="stylesheet" href="../../src/treeList/jquery.ex.treeList.css" media="screen" />
 
-        <script type="text/javascript" src="../../lib/jquery-1.6.2.js" ></script>
+        <script type="text/javascript" src="../../lib/jquery-1.6.2.js"  ></script>
+        <script type="text/javascript" src="../../lib/jquery.cookie.js" ></script>
         <script type="text/javascript" src="../../src/treeList/jquery.ex.treeList.js" ></script>
+        
 
         <style>
             body {
@@ -30,50 +32,50 @@
     <body>
 
         <ul class="jqueryFileTree" id="lista_arvore">
-            <li class="directory">
+            <li class="directory" id="node-1">
                 <a href="#" >Home</a>
             </li>
-            <li class="directory">
+            <li class="directory" id="node-2">
                 <a  href="#" >Suport</a>
                 <ul>                    
-                    <li><a  href="#">Google</a></li>
-                    <li><a  href="#">item2</a></li>
-                    <li><a  href="#">item3</a></li>
+                    <li id="node-3"><a  href="#">Google</a></li>
+                    <li id="node-4"><a  href="#">item2</a></li>
+                    <li id="node-5"><a  href="#">item3</a></li>
                 </ul>
             </li>
-            <li class="directory">
+            <li class="directory" id="node-6">
                 <a href="#">Sega  </a>
                 <ul>                    
-                    <li><a  href="#">MasterSystem</a></li>
-                    <li><a  href="#">Genesis</a></li>
-                    <li>
+                    <li id="node-7"><a  href="#">MasterSystem</a></li>
+                    <li id="node-8"><a  href="#">Genesis</a></li>
+                    <li id="node-9">
                         <a  href="#">MegaDrive  </a>
                         <ul>
-                            <li> <a  href="#">MegaDrive 2</a> </li>
-                            <li> <a  href="#">MegaDrive 3</a> </li>
+                            <li id="node-10"> <a  href="#">MegaDrive 2</a> </li>
+                            <li id="node-11"> <a  href="#">MegaDrive 3</a> </li>
                         </ul>                    
                     </li>
                 </ul>
             </li>
 
-            <li class="directory">
+            <li class="directory" id="node-12">
                 <a href="#">Jogos  </a>
                 <ul>                    
-                    <li><a  href="#">Nintendo</a></li>
-                    <li><a  href="#">Capcom</a></li>
+                    <li id="node-13"><a  href="#">Nintendo</a></li>
+                    <li id="node-14"><a  href="#">Capcom</a></li>
 
-                    <li>
+                    <li id="node-15">
                         <a  href="#">Luta</a>
                         <ul>
-                            <li> 
+                            <li id="node-16"> 
                                 <a  href="#">Super Street Fighter Alpha  </a> 
                                 <ul>
-                                    <li> <a  href="#">Street Fighter 2</a> </li>
+                                    <li id="node-17"> <a  href="#">Street Fighter 2</a> </li>
                                 </ul>
                             </li>
 
-                            <li> <a  href="#">Super Street Fighter Alpha</a>  </li>                            
-                            <li> <a  href="#">Street Fighter 2</a> </li>                            
+                            <li id="node-18"> <a  href="#">Super Street Fighter Alpha</a>  </li>                            
+                            <li id="node-19"> <a  href="#">Street Fighter 2</a> </li>                            
                         </ul>                    
                     </li>
                 </ul>
