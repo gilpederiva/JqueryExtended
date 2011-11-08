@@ -5,38 +5,32 @@
         init : function( options ) {
             
             var settings = {
-                'toggleable' : false
+                'speedEffect' : 200
             }
             
-                        
-            var baseClasses = "ui-fieldset ui-widget ui-widget-content ui-corner-all";                    
-            var legendClasses = "ui-fieldset-legend ui-corner-all ui-state-default";            
-            var spanToggleableClasses = "ui-fieldset-toggler ui-icon ui-icon-minusthick";
-            
+            var listItens =  null;
                 
             return this.each(function(){
         
                 if ( options ) { 
                     $.extend( settings, options );
                 }
-                        
-                $(this).find("li").addClass("directory");
-//                
-//                $(this).find("li").bind('click', function(){
-//                    $(this).find("ul:eq(0)").slideDown(200).end().addClass("aberto");
-//                });
                 
-                $(this).find( "li" ).toggle(
-                        function(){                            
-                           //$(this).find('ul:eq(0)').toggle( 'blind', 200 ).end().removeClass("fechado").addClass("aberto"); 
-                           $(this).find('ul:eq(0)').slideDown(200).end().removeClass("fechado collapsed").addClass("aberto expanded"); 
+                listItens = $(this).find("li");
+                
+                listItens.addClass("directory").toggle(
+                    function(){                                                       
+                        $(this).find('ul:eq(0)').slideDown( settings.speedEffect  ).end().removeClass("collapsed").addClass("expanded"); 
                            
-                        },
-                        function(){                           
-                           $(this).find('ul:eq(0)').slideUp(200).end().removeClass("aberto expanded").addClass("fechado collapsed"); 
-                        }
-                     );                   
-                                                                                                   
+                    },
+                    function(){                           
+                        $(this).find('ul:eq(0)').slideUp( settings.speedEffect  ).end().removeClass("expanded").addClass("collapsed"); 
+                    }
+                   );        
+                
+                
+                
+                                                                 
             });
         
         }        
