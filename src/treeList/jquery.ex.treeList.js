@@ -5,10 +5,13 @@
         init : function( options ) {
             
             var settings = {
-                'speedEffect' : 200
+                'speedEffect' : 200,
+                'script': '',
+                'anchorClass': '.classe',
+                'parametro':'id' 
             }
-            
-            var listItens =  null;
+                        
+            var listAncoras = null;
                 
             return this.each(function(){
         
@@ -16,43 +19,48 @@
                     $.extend( settings, options );
                 }
                 
-                listItens = $(this).find("li");
+               
+                listAncoras = $(this).find("a"+settings.anchorClass);
                 
-                listItens.each(function(index){
-                   
-                   var valorCookie = $.cookie( "setor-" + $(this).attr("id") );
-                   
-                   if (valorCookie == 'true')
-                    $(this).find("ul:eq(0)").show().end().addClass("expanded");
-                   
-                });
-                
-                
-                listItens.addClass("directory").toggle(
-                    function(){                                                       
-                        $(this).find('ul:eq(0)').slideDown( settings.speedEffect  ).end().removeClass("collapsed").addClass("expanded");
+                listAncoras.live('click', function(){
+                    
+                    var listItem = $(this).closest("li");
+                    
+                    if ( listItem.hasClass("expanded") ){
                         
+                        listItem.find('ul:eq(0)').slideUp( settings.speedEffect  ).end().removeClass("expanded").addClass("collapsed");   
                         
-                        var cookieName = "setor-" + $(this).attr("id");
+                    }else{
                         
-                        
-                        $.cookie(cookieName, 'true');
-                           
-                    },
-                    function(){                           
-                        $(this).find('ul:eq(0)').slideUp( settings.speedEffect  ).end().removeClass("expanded").addClass("collapsed"); 
-                        
-                        var cookieName = "setor-" + $(this).attr("id");
-                        
-                        
-                        $.cookie(cookieName, 'false');                    
+                        if ( listItem.find('ul:eq(0)').length == 0 ){
+                            
+                            listItem.addClass("loading");
+                            
+                            var vetor = $(this).attr("id").split("-");
+                            var parametro = settings.parametro;
+                            $.get( settings.script , {parametro : vetor[1] },
+                            
+                                function(data){
+                                    
+                                    $(".loading").append(data)
+                                                 .children('ul')
+                                                 .slideDown( settings.speedEffect  ).end()
+                                                 .removeClass("collapsed loading")
+                                                 .addClass("expanded");
+                                    
+                                }, "html");
+                                
+                        }else{
+                            listItem.find( "ul:eq(0)" )
+                                    .slideDown( settings.speedEffect  ).end()
+                                    .removeClass( "collapsed" )
+                                    .addClass( "expanded" );
+                        }
                         
                     }
-                   );        
-                
-                
-                
-                                                                 
+                                                                                
+                });  
+                                                                                                                                                         
             });
         
         }        

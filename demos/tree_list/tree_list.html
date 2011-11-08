@@ -22,7 +22,7 @@
         <script type="text/javascript">
             $(function(){                                            
                 
-                $("#lista_arvore").treeList();
+                $("#lista_arvore").treeList({script:'lista.php', anchorClass: '.setor', parametro: 'setorPaiId'});
                                                     
             });
         </script>
@@ -31,9 +31,9 @@
     </head>
     <body>
 
-        <ul class="jqueryFileTree" id="lista_arvore">
+        <ul class="treeList" id="lista_arvore">
             <li class="directory" id="node-1">
-                <a href="#" >Home</a>
+                <a href="#" class="setor" id="setor-2" >Home</a>
             </li>
             <li class="directory" id="node-2">
                 <a  href="#" >Suport</a>
