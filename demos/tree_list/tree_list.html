@@ -8,7 +8,7 @@
         <script type="text/javascript" src="../../lib/jquery-1.6.2.js"  ></script>
         <script type="text/javascript" src="../../lib/jquery.cookie.js" ></script>
         <script type="text/javascript" src="../../src/treeList/jquery.ex.treeList.js" ></script>
-        
+
 
         <style>
             body {
@@ -17,72 +17,107 @@
                 font-size: 12px;
             }
 
+            #tree-container{
+                width: 400px;
+                /*border: 1px solid #000;*/
+                -moz-box-shadow: 0 0 5px #888;
+                -wibkit-box-shadow: 0 0 5px #888;
+                box-shadow: 0 0 5px #888;
+                height: 500px;
+                padding: 5px;
+                overflow: scroll;
+            }
+
         </style>
 
         <script type="text/javascript">
+
+
+
+            
             $(function(){                                            
                 
-                $("#lista_arvore").treeList({script:'lista.php', anchorClass: '.setor', parametro: 'setorPaiId'});
-                                                    
+                var lista = $("#lista_arvore").treeList({script:''});
+                console.log(lista)
+                
+                $("#ver").click(function(){
+                   
+                   lista.treeList('expandeAllNodes');
+                   
+                });
+                
+                
+                $("#esc").click(function(){
+                    lista.treeList('collapseAllNodes','novo');
+                })
+                
             });
         </script>
-        
+
         <title>Menu Drop Down</title>
     </head>
     <body>
-
-        <ul class="treeList" id="lista_arvore">
-            <li class="directory" id="node-1">
-                <a href="#" class="setor" id="setor-2" >Home</a>
-            </li>
-            <li class="directory" id="node-2">
-                <a  href="#" >Suport</a>
-                <ul>                    
-                    <li id="node-3"><a  href="#">Google</a></li>
-                    <li id="node-4"><a  href="#">item2</a></li>
-                    <li id="node-5"><a  href="#">item3</a></li>
-                </ul>
-            </li>
-            <li class="directory" id="node-6">
-                <a href="#">Sega  </a>
-                <ul>                    
-                    <li id="node-7"><a  href="#">MasterSystem</a></li>
-                    <li id="node-8"><a  href="#">Genesis</a></li>
-                    <li id="node-9">
-                        <a  href="#">MegaDrive  </a>
-                        <ul>
-                            <li id="node-10"> <a  href="#">MegaDrive 2</a> </li>
-                            <li id="node-11"> <a  href="#">MegaDrive 3</a> </li>
-                        </ul>                    
-                    </li>
-                </ul>
-            </li>
-
-            <li class="directory" id="node-12">
-                <a href="#">Jogos  </a>
-                <ul>                    
-                    <li id="node-13"><a  href="#">Nintendo</a></li>
-                    <li id="node-14"><a  href="#">Capcom</a></li>
-
-                    <li id="node-15">
-                        <a  href="#">Luta</a>
-                        <ul>
-                            <li id="node-16"> 
-                                <a  href="#">Super Street Fighter Alpha  </a> 
-                                <ul>
-                                    <li id="node-17"> <a  href="#">Street Fighter 2</a> </li>
-                                </ul>
-                            </li>
-
-                            <li id="node-18"> <a  href="#">Super Street Fighter Alpha</a>  </li>                            
-                            <li id="node-19"> <a  href="#">Street Fighter 2</a> </li>                            
-                        </ul>                    
-                    </li>
-                </ul>
-            </li>            
-        </ul>
-
         
+        <button id="ver">Abrir</button>
+        
+        &nbsp;
+        
+        <button id="esc">Esconder</button>
+        
+        <div id="tree-container">
+
+            <ul class="treeList" id="lista_arvore">
+                <li class="directory" id="node-1">
+                    <a href="#" class="setor" id="setor-2" >Home</a>
+                </li>
+                <li class="directory" id="node-2">
+                    <a  href="#" >Suport</a>
+                    <ul>                    
+                        <li class="directory" id="node-3"><a  href="#">Google</a></li>
+                        <li class="directory" id="node-4"><a  href="#">item2</a></li>
+                        <li class="directory" id="node-5"><a  href="#">item3</a></li>
+                    </ul>
+                </li>
+                <li class="directory" id="node-6">
+                    <a href="#">Sega  </a>
+                    <ul>                    
+                        <li class="directory" id="node-7"><a  href="#">MasterSystem</a></li>
+                        <li class="directory" id="node-8"><a  href="#">Genesis</a></li>
+                        <li class="directory" id="node-9">
+                            <a  href="#">MegaDrive  </a>
+                            <ul>
+                                <li class="directory"  id="node-10"> <a  href="#">MegaDrive 2</a> </li>
+                                <li class="directory" id="node-11"> <a  href="#">MegaDrive 3</a> </li>
+                            </ul>                    
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="directory" id="node-12">
+                    <a href="#">Jogos  </a>
+                    <ul>                    
+                        <li class="directory" id="node-13"><a  href="#">Nintendo</a></li>
+                        <li class="directory" id="node-14"><a  href="#">Capcom</a></li>
+
+                        <li class="directory" id="node-15">
+                            <a  href="#">Luta</a>
+                            <ul>
+                                <li class="directory" id="node-16"> 
+                                    <a  href="#">Super Street Fighter Alpha  </a> 
+                                    <ul>
+                                        <li class="directory" id="node-17"> <a  href="#">Street Fighter 2</a> </li>
+                                    </ul>
+                                </li>
+
+                                <li class="directory" id="node-18"> <a  href="#">Super Street Fighter Alpha</a>  </li>                            
+                                <li class="directory" id="node-19"> <a  href="#">Street Fighter 2</a> </li>                            
+                            </ul>                    
+                        </li>
+                    </ul>
+                </li>            
+            </ul>
+
+        </div>
 
     </body>
 </html>
